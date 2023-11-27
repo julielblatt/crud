@@ -16,3 +16,5 @@ INSERT INTO tasks (name, time, priority) VALUES
   ('Tarefa 1', '08:00', 'Alta'),
   ('Tarefa 2', '10:00', 'Média'),
   ('Tarefa 3', '12:00', 'Baixa');
+
+  --
