@@ -18,7 +18,7 @@ export default function Card(props) {
         id={props.id}
       />
       <div
-        className={`card-container ${props.priorityClass}`} // Adicionando a classe de prioridade
+        className={`card-container ${props.priorityClass}`} 
         onClick={() => setOpen(true)}
       >
         <h1 className="card-title">{props.name}</h1>
