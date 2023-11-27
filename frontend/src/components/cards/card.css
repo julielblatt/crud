@@ -25,10 +25,24 @@
     display: inline;
   }
   
-  .card-cost {
-    margin-top: 15px;
+  .card-time {
   }
   
-  .card-container:hover {
-    background-color: aqua;
+  .high-priority {
+    background-color: #ff9999; /* Vermelho para alta prioridade */
+  }
+  .high-priority:hover {
+    background-color: #f75f5f; /* Vermelho para alta prioridade */
+  }
+  .medium-priority {
+    background-color: #ffff99; /* Amarelo para média prioridade */
+  }
+  .medium-priority:hover {
+    background-color: #f7f75e; /* Amarelo para média prioridade */
+  }
+  .low-priority {
+    background-color: #99c9ff; /* Verde para baixa prioridade */
+  }
+  .low-priority:hover {
+    background-color: #5ca5f8; /* Verde para baixa prioridade */
   }

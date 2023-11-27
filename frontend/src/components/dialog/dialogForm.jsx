@@ -6,13 +6,21 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Axios from "axios";
-
+const TimeInput = ({ inputRef, ...props }) => (
+  <input
+    {...props}
+    ref={inputRef}
+    style={{ width: "100%" }}
+    placeholder="HH:mm"
+    pattern="[0-2][0-9]:[0-5][0-9]" // Padrão para horas no formato HH:mm
+  />
+);
 export default function FormDialog(props) {
   const [editValues, setEditValues] = useState({
     id: props.id,
     name: props.title,
-    cost: props.cost,
-    category: props.category,
+    time: props.time,
+    priority: props.priority,
   });
 
   const handleChangeValues = (values) => {
@@ -30,8 +38,8 @@ export default function FormDialog(props) {
     Axios.put("http://localhost:3001/edit", {
       id: editValues.id,
       name: editValues.name,
-      cost: editValues.cost,
-      category: editValues.category,
+      time: editValues.time,
+      category: editValues.priority,
     }).then(() => {
       props.setListCard(
         props.listCard.map((value) => {
@@ -39,8 +47,8 @@ export default function FormDialog(props) {
             ? {
                 id: editValues.id,
                 name: editValues.name,
-                cost: editValues.cost,
-                category: editValues.category,
+                time: editValues.time,
+                priority: editValues.priority,
               }
             : value;
         })
@@ -83,7 +91,7 @@ export default function FormDialog(props) {
             autoFocus
             margin="dense"
             id="name"
-            label="Nome do jogo"
+            label="Nome da tarefa"
             defaultValue={props.title}
             type="text"
             onChange={handleChangeValues}
@@ -92,19 +100,22 @@ export default function FormDialog(props) {
           <TextField
             autoFocus
             margin="dense"
-            id="cost"
-            label="preço"
-            defaultValue={props.cost}
-            type="number"
+            id="time"
+            label="Horario"
+            defaultValue={props.time}
+            type="text"
+        InputProps={{
+          inputComponent: TimeInput,
+        }}
             onChange={handleChangeValues}
             fullWidth
           />
           <TextField
             autoFocus
             margin="dense"
-            id="category"
-            label="Categoria"
-            defaultValue={props.category}
+            id="priority"
+            label="Prioridade"
+            defaultValue={props.priority}
             type="text"
             onChange={handleChangeValues}
             fullWidth
@@ -112,7 +123,7 @@ export default function FormDialog(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Cancel
+            Cancelar
           </Button>
           <Button color="primary" onClick={() => handleDeleteGame()}>
             Excluir
